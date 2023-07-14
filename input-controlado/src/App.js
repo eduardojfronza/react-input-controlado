@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import Filho from "./comoponents/Filho/Filho";
+import './App.css'
 function App() {
+  const [estado, setEstado] = useState(0);
+
+  const alterarEstado = () => {
+    setEstado(estado + 1)
+    
+  }
+
+  const zerarEstado = () =>{
+    if(estado > 0){
+      setEstado(estado - 1)
+    } else {
+       alert("Não é possivel deixar o estado negativo!")
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="ContainerApp">
+        <h1>Estado:{estado}</h1>
+        <Filho alterarEstado={alterarEstado} zerarEstado={zerarEstado} />
+      </div>
+    </>
   );
 }
 
-export default App;
+export default App
